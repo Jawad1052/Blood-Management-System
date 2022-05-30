@@ -1,0 +1,39 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="indec.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script language="JavaScript" type="text/javaScript">
+            function check() {
+            if ( document.login.name.value == "" )
+    	    {
+    			alert("Email Required!");			
+    			return false;
+    	    }
+            if (document.login.password.value == "")
+            {
+                    alert("Password Required!");
+                    return false;
+            }  
+            }
+        </script>
+</head>
+
+<body>
+    <div class="login">
+        <div class="form">
+            <form name="login" class="login-form" method="post" action="login" onsubmit="return check()">
+                <span class="material-icons">lock</span>
+                <input name="name" type="text" placeholder="email">
+                <input name="password" type="password" placeholder="password">
+                <button>login</button>
+                <br><br>
+                <div>
+                    <a href="signup.html">Not Sign-Up Yet? Click Here</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,56 @@
+<html>
+
+<head>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <form name="sign" class="form" action="signup" method="POST" onsubmit="return Validate()">
+
+        <div class="main">
+            <h1>Sign-Up Form</h1>
+        </div>
+        <div class="mid">
+
+
+            <div>
+                Full-Name:<br>
+                <input type="text" name="Name">
+            </div>
+            <div>
+                Email:<br>
+                <input id="em" name="Email" type="text">
+                <div>
+                    Password:<br>
+                    <input type="password" name="Password">
+                </div>
+
+                <div>
+                    Age:<br>
+                    <input type="text" name="Age">
+                </div>
+                <br>
+                <div>
+                    <span>
+                        <input type="radio" id="male" name="Male" value="Male"><label class="male"
+                            for="male">Male</label>
+                    </span>
+                    <span>
+                        <input type="radio" id="female" name="Male" value="Female"><label class="female"
+                            for="female">Female</label>
+                    </span>
+                </div>
+                <br>
+                <button type="submit">Register</button>
+                <br><br>
+                <div class="bot">
+                    <a href="login.html">Already Sign-Up?Click Here</a>
+                </div>
+            </div>
+    </form>
+    <script src="script.js"></script>
+</body>
+
+</html>
