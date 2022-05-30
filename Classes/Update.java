@@ -5,7 +5,7 @@ import java.sql.*;
 import javax.swing.*;
 
 
-public class Add extends HttpServlet {
+public class Update extends HttpServlet {
   
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
   
@@ -16,9 +16,7 @@ public class Add extends HttpServlet {
 	HttpSession session=request.getSession(false);  
         if(session!=null)
 	{
-
-        
-          
+   
     String name=request.getParameter("Name");
     String email=request.getParameter("Email");
     String age=request.getParameter("Age");
@@ -26,20 +24,21 @@ public class Add extends HttpServlet {
     String group=request.getParameter("Group");
     String contact=request.getParameter("Contact");
     String city=request.getParameter("City");
-     String cnic=request.getParameter("Cnic");
-
-
- 	if(name=="" || email =="" ||age=="" || gender ==""|| group =="" || contact =="" || city=="" || cnic ==""){
- 		RequestDispatcher rd = request.getRequestDispatcher("/Add.jsp");	 
+    String cnic=request.getParameter("Cnic");
+	
+	if(name=="" || email =="" ||age=="" || gender ==""|| group =="" || contact =="" || city=="" || cnic ==""){
+ 		RequestDispatcher rd = request.getRequestDispatcher("/Update.jsp");	 
 	 	rd.forward(request,response);
 	}
 	else{
+
 
     out.println("<html>");
     out.println("<head></head>");
     out.println("<body>");
 
-try{
+
+    try{
 
     Class.forName("com.mysql.jdbc.Driver");
 
@@ -49,21 +48,19 @@ try{
 
     Statement st=con.createStatement();
 
-     
-     String query = "INSERT INTO profile VALUES('"+ name + "','" +email+ "','" +age+ "','" +gender+ "','" +group+ "','" +contact+ "','"+city+"','"+cnic+"') ";
+     String query = "UPDATE profile set Name ='"+name+"',Email='"+email+"',Age='"+age+"',Gender='"+gender+"',BGroup='"+group+"',Contact='"+contact+"',City='"+city+"' WHERE CNIC ='"+cnic+"' "; 
+
 
       int rs = st.executeUpdate( query );
+     if(rs>0){ 
+ 		RequestDispatcher rd = request.getRequestDispatcher("/True.jsp");	 
+	 	rd.include(request,response);
 
-     if(rs>0)
-	{
-	  RequestDispatcher rd = request.getRequestDispatcher("/True.jsp");	 
-	  rd.include(request,response);
 	}
 
 	else{
-	        RequestDispatcher rd = request.getRequestDispatcher("/False.jsp");	 
-	        rd.include(request,response); 		
-	    }
+		RequestDispatcher rd = request.getRequestDispatcher("/False.jsp");	 
+	 	rd.include(request,response); 		}
 
      out.println("</body></html>");
 
@@ -74,13 +71,12 @@ try{
 
       out.println(e);
     }
-}  
+}
 }
 	else
             {   
                  response.sendRedirect("login.html");  
             }
-}
-
   }
 
+}
